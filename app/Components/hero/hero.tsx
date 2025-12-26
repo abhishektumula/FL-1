@@ -50,7 +50,7 @@ export const HeroSection = () => {
   const statDetails = [
     {
       providedNumber: "999",
-      providedService: "project Completion",
+      providedService: "Project Completion",
     },
     {
       providedNumber: "800",

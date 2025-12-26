@@ -6,6 +6,8 @@ import { motion } from "motion/react";
 import { Services } from "./proviers/services";
 import { Landing } from "./Landing/landing";
 import { OtherProjects } from "./Landing/otherprojects";
+import ProcessOfBuying from "./pob";
+import PersonalizeSpaceForm from "./footer";
 
 export function Container() {
   return (
@@ -28,6 +30,8 @@ export function Container() {
       >
         <AnimatedHero />
       </motion.div>
+      <ProcessOfBuying />
+      <PersonalizeSpaceForm />
     </div>
   );
 }
