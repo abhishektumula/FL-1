@@ -10,14 +10,14 @@ import Link from "next/link";
 
 export const MobileBar = () => {
   const [open, setOpen] = useState(false);
-  const links = [
+  const links: { title: string; ref: string }[] = [
     {
       title: "Home",
       ref: "/",
     },
     {
-      title: "Services",
-      ref: "/services",
+      title: "About us",
+      ref: "/about",
     },
     {
       title: "Our work",

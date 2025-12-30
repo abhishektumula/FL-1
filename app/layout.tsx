@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { NavBar } from "./Components/navbar/NavBar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,7 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        <div className="w-full min-h-screen max-w-6xl mx-auto">
+          <NavBar />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

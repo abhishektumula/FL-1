@@ -5,8 +5,9 @@ import { MobileBar } from "./mobilenavbar";
 
 export function NavBar() {
   return (
-    <div className="flex flex-row gap-4 py-4 px-2 border-b-2 justify-between items-center w-full text-neutral-600">
-      <Logo />
+    <div className="flex flex-row gap-4 py-4 px-2 justify-between items-center w-full text-neutral-600">
+      {/* <Logo /> */}
+      <h1 className="font-semibold text-3xl">Sreeja Interiors</h1>
       <DesktopBar />
       <MobileBar />
     </div>
@@ -20,8 +21,8 @@ export const DesktopBar = () => {
       ref: "/",
     },
     {
-      title: "Services",
-      ref: "/services",
+      title: "About us",
+      ref: "/about",
     },
     {
       title: "Our work",
@@ -33,14 +34,14 @@ export const DesktopBar = () => {
     },
   ];
   return (
-    <div className="md:flex flex-row gap-5 justify-between items-center hidden">
+    <div className="md:flex flex-row gap-4 justify-between items-center hidden">
       {links.map((each, index) => (
         <Link
           key={index}
           className="text-xs md:text-xl hover:text-black "
-          href={each.title}
+          href={each.ref}
         >
-          {each.title}
+          <span className="text-lg sm:text:md">{each.title}</span>
         </Link>
       ))}
     </div>

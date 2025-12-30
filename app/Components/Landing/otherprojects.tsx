@@ -24,8 +24,8 @@ export const OpenCardTitle = ({
         alt="image source of project"
       />
       <div className="flex flex-col gap-4">
-        <h1>{title}</h1>
-        <p>{desc}</p>
+        <h1 className="text-lg">{title}</h1>
+        <p className="text-red-200">{desc}</p>
       </div>
     </motion.div>
   );
@@ -55,7 +55,7 @@ export const OtherProjects = () => {
 
   const [open, setOpen] = useState<cardType | null>(null);
   return (
-    <div className="p-1 text-4xl font-semibold mask-b-from-90%">
+    <div className="p-4 text-4xl font-semibold">
       {open && (
         <OpenCardTitle
           title={open.title}
