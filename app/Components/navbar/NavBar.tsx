@@ -1,49 +1,99 @@
 "use client";
+
 import Link from "next/link";
-import { Logo } from "../logo";
+import { usePathname } from "next/navigation";
+import { IconMoon, IconSun } from "@tabler/icons-react";
+import { useEffect, useState } from "react";
+import { LayoutGroup, motion } from "motion/react";
 import { MobileBar } from "./mobilenavbar";
 
+const links: { title: string; ref: string }[] = [
+  { title: "Home", ref: "/" },
+  { title: "About", ref: "/about" },
+  { title: "Our Work", ref: "/work" },
+  { title: "Contact", ref: "/contact" },
+];
+
 export function NavBar() {
+  const pathname = usePathname();
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || stored === "light") {
+      return stored;
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
-    <div className="flex flex-row gap-4 py-4 px-2 justify-between items-center w-full text-neutral-600">
-      {/* <Logo /> */}
-      <h1 className="font-semibold text-3xl">Sreeja Interiors</h1>
-      <DesktopBar />
-      <MobileBar />
-    </div>
+    <header className="sticky top-0 z-50 h-28 w-full border-b border-[var(--line)] bg-[var(--nav-glass)] backdrop-blur-3xl">
+      <div className="mx-auto flex h-full w-full max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="flex flex-col leading-tight">
+          <span className="hidden text-[11px] uppercase tracking-[0.2em] text-[var(--muted)] sm:block">
+            Interior Studio
+          </span>
+          <span className="text-lg font-semibold tracking-tight text-[var(--foreground)] sm:text-2xl">
+            Sreeja Interiors
+          </span>
+        </Link>
+
+        <DesktopBar pathname={pathname} />
+
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setTheme((prev) => (prev === "light" ? "dark" : "light"))}
+            aria-label="Toggle theme"
+            className="rounded-full border border-[var(--line)] bg-[var(--glass-soft)] p-2 text-[var(--foreground)] backdrop-blur-md transition hover:scale-[1.03]"
+          >
+            {theme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
+          </button>
+          <MobileBar links={links} />
+        </div>
+      </div>
+    </header>
   );
 }
 
-export const DesktopBar = () => {
-  const links: { title: string; ref: string }[] = [
-    {
-      title: "Home",
-      ref: "/",
-    },
-    {
-      title: "About us",
-      ref: "/about",
-    },
-    {
-      title: "Our work",
-      ref: "/work",
-    },
-    {
-      title: "Contact",
-      ref: "/contact",
-    },
-  ];
+export const DesktopBar = ({ pathname }: { pathname: string }) => {
+  const [hovered, setHovered] = useState<string | null>(null);
+  const activeRef = hovered ?? pathname;
+
   return (
-    <div className="md:flex flex-row gap-4 justify-between items-center hidden">
-      {links.map((each, index) => (
-        <Link
-          key={index}
-          className="text-xs md:text-xl hover:text-black "
-          href={each.ref}
-        >
-          <span className="text-lg sm:text:md">{each.title}</span>
-        </Link>
-      ))}
-    </div>
+    <LayoutGroup>
+      <nav
+        className="relative hidden items-center gap-6 md:flex"
+        onMouseLeave={() => setHovered(null)}
+      >
+        {links.map((each) => (
+          <Link
+            key={each.ref}
+            href={each.ref}
+            onMouseEnter={() => setHovered(each.ref)}
+            className="relative z-10 px-1 py-2 text-sm font-medium text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+          >
+            {activeRef === each.ref ? (
+              <motion.span
+                layoutId="nav-hover-pill"
+                className="absolute -bottom-1 left-0 right-0 -z-10 h-[3px] rounded-full bg-[var(--foreground)]"
+                transition={{ type: "spring", stiffness: 420, damping: 34 }}
+              />
+            ) : null}
+            <span className={activeRef === each.ref ? "text-[var(--foreground)]" : "text-[var(--muted)]"}>
+              {each.title}
+            </span>
+          </Link>
+        ))}
+      </nav>
+    </LayoutGroup>
   );
 };

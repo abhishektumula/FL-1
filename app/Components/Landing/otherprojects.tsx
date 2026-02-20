@@ -64,7 +64,7 @@ export const OtherProjects = () => {
         />
       )}
       <h1>Our Projects</h1>
-      <div className="p-1 flex flex-col md:flex-row gap-2 md:gap-5 justify-center [--pattern-project:var(--color-gray-100)] bg-[repeating-linear-gradient(0deg,var(--pattern-project)_0px,var(--pattern-project)_1px,transparent_1px,transparent_9px),repeating-linear-gradient(90deg,var(--pattern-project)_0px,var(--pattern-project)_1px,transparent_1px,transparent_9px)] bg-[size:12px_12px]">
+      <div className="p-1 flex flex-col md:flex-row gap-2 md:gap-5 justify-center bg-transparent">
         {details.map((one, index) => (
           <ProjectCard
             key={index}
@@ -105,7 +105,7 @@ export const ProjectCard = ({
         </p>
       </div>
       <div className="">
-        <button className="text-lg text-neutral-600 px-12 py-3 text-start bg-neutral-200 rounded-xl">
+        <button className="text-lg text-[var(--button-text)] px-12 py-3 text-start bg-[var(--button-bg)] rounded-xl">
           View Details
         </button>
       </div>

@@ -22,7 +22,7 @@ export const ServiceNumberCount = ({
   }, []);
 
   return (
-    <h1 className="text-neutral-700 text-xl md:text-4xl">
+    <h1 className="text-xl text-[var(--foreground)] md:text-4xl">
       {ServiceNumber}
       <span>+</span>
     </h1>
@@ -39,7 +39,7 @@ export const Stats = ({
   return (
     <div className="flex flex-col justify-center items-center gap-2 overflow-hidden">
       <ServiceNumberCount ServiceNumber={ServiceNumber} />
-      <p className="text-neutral-700 text-lg md:text-xl text-center">
+      <p className="text-center text-lg text-[var(--muted)] md:text-xl">
         {ServiceTitle}
       </p>
     </div>
@@ -84,14 +84,16 @@ export const HeroSection = () => {
     <motion.div className="flex flex-col gap-4 w-full p-2 md:p-4 justify-center">
       <div className="flex flex-col gap-4 p-2 md:p-4 md:flex-row">
         <div className="flex flex-col gap-5 justify-start items-start p-2 md:p-4">
-          <h1 className="text-black text-6xl font-semibold">Interior Design</h1>
-          <p className="text-neutral-500 tracking-tight text-xl leading-relaxed">
+          <h1 className="text-6xl font-semibold text-[var(--foreground)]">
+            Interior Design
+          </h1>
+          <p className="text-xl leading-relaxed tracking-tight text-[var(--muted)]">
             Step into a world where the art of Interior Design is meticulously
             crafted to bring together timeless elegance and cutting-edge modern
             Innovation, Allowing you to transform your living spaces into the
             epitome of luxury and sophistication
           </p>
-          <button className="px-4 py-2 mt-10 text-xl md:text-2xl text-neutral-200 bg-neutral-900 rounded-lg hover:shadow-2xl/99 transition duration-300">
+          <button className="mt-10 rounded-lg bg-[var(--button-bg)] px-4 py-2 text-xl text-[var(--button-text)] transition duration-300 hover:opacity-90 md:text-2xl">
             Contact us
           </button>
         </div>
@@ -142,11 +144,11 @@ export const HeroSection = () => {
         <div className="w-full flex flex-col justify-start items-start md:items-start p-2 md:p-4 leading-relaxed gap-6">
           <h1 className="text-4xl md:text-6xl tracking-wider font-semibold">
             Interior
-            <span className="text-2xl md:text-5xl text-neutral-500"> &</span>
+            <span className="text-2xl text-[var(--muted)] md:text-5xl"> &</span>
             <br />
             Exterior
           </h1>
-          <p className="text-neutral-500 tracking-tight text-xl leading-relaxed">
+          <p className="text-xl leading-relaxed tracking-tight text-[var(--muted)]">
             Elevate your spaces with bespoke interior designs that reflect your
             unique style and aspirations, crafted with precision and brilliance
             for an unforgettable living experience

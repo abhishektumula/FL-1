@@ -1,59 +1,70 @@
-import React from "react";
+"use client";
 
-const PersonalizeSpaceForm: React.FC = () => {
+import { FormEvent, useState } from "react";
+
+const PersonalizeSpaceForm = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
-    <section className="bg-white w-full py-20 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        {/* LEFT CONTENT */}
+    <section className="w-full px-5 py-12 md:px-8 md:py-16">
+      <div className="grid items-start gap-10 lg:grid-cols-2">
         <div>
-          <h2 className="text-3xl font-semibold text-gray-900 mb-4">
-            Ready To Personalize Your Space?
+          <p className="kicker">Start Your Project</p>
+          <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+            Ready to personalize your space?
           </h2>
-          <p className="text-gray-700 leading-relaxed max-w-md">
-            Our service is for people who believe in owning a safe, clean, and
-            organized space. We promise that engaging with what we make will
-            help you declutter your life.
+          <p className="mt-4 max-w-md leading-relaxed text-[var(--muted)]">
+            Share your requirements and our team will contact you with layout
+            ideas, budget range, and project timeline.
           </p>
         </div>
 
-        {/* FORM SECTION */}
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col gap-6"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <input
               type="text"
-              placeholder="Name"
-              className="border-b border-gray-400 bg-transparent outline-none py-2"
+              required
+              placeholder="Your Name"
+              className="rounded-xl border border-[var(--line)] bg-[var(--glass-soft)] px-4 py-3 text-sm outline-none backdrop-blur-md focus:border-[var(--accent)]"
             />
             <input
               type="email"
+              required
               placeholder="Email"
-              className="border-b border-gray-400 bg-transparent outline-none py-2"
+              className="rounded-xl border border-[var(--line)] bg-[var(--glass-soft)] px-4 py-3 text-sm outline-none backdrop-blur-md focus:border-[var(--accent)]"
             />
           </div>
 
           <input
             type="tel"
+            required
             placeholder="Phone Number"
-            className="border-b border-gray-400 bg-transparent outline-none py-2"
+            className="rounded-xl border border-[var(--line)] bg-[var(--glass-soft)] px-4 py-3 text-sm outline-none backdrop-blur-md focus:border-[var(--accent)]"
           />
 
-          <input
-            type="text"
-            placeholder="Anything we should know?"
-            className="border-b border-gray-400 bg-transparent outline-none py-2"
+          <textarea
+            placeholder="Tell us about your space"
+            rows={4}
+            className="rounded-xl border border-[var(--line)] bg-[var(--glass-soft)] px-4 py-3 text-sm outline-none backdrop-blur-md focus:border-[var(--accent)]"
           />
 
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              className="bg-black text-white px-6 py-2 font-medium mt-4"
-            >
-              Submit
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="btn-primary mt-2 w-fit rounded-full px-6 py-2.5 text-sm font-semibold"
+          >
+            Submit Query
+          </button>
+
+          {submitted ? (
+            <p className="text-sm text-green-700">
+              Query submitted. We will contact you shortly.
+            </p>
+          ) : null}
         </form>
       </div>
     </section>
