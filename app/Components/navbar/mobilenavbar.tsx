@@ -16,7 +16,7 @@ export const MobileBar = ({ links }: { links: { title: string; ref: string }[] }
       <button
         aria-label={open ? "Close navigation" : "Open navigation"}
         onClick={() => setOpen((prev) => !prev)}
-        className="rounded-full border border-[var(--line)] bg-[var(--glass-soft)] p-2 text-[var(--foreground)] backdrop-blur-md"
+        className="rounded-full border border-[var(--line)] bg-[var(--glass-soft)] p-2 text-[var(--nav-item-text)] backdrop-blur-md"
       >
         {open ? <IconX size={22} /> : <IconLayoutSidebarLeftCollapseFilled size={22} />}
       </button>
@@ -28,7 +28,7 @@ export const MobileBar = ({ links }: { links: { title: string; ref: string }[] }
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 top-14 w-56 rounded-2xl border border-[var(--line)] bg-[var(--glass-bg)] p-3 shadow-lg backdrop-blur-xl"
+            className="absolute right-0 top-14 w-56 rounded-2xl border border-[var(--line)] bg-[var(--nav-menu-bg)] p-3 shadow-lg backdrop-blur-xl"
           >
             {links.map((each, index) => {
               const isActive = pathname === each.ref;
@@ -42,10 +42,18 @@ export const MobileBar = ({ links }: { links: { title: string; ref: string }[] }
                   <Link
                     href={each.ref}
                     onClick={() => setOpen(false)}
+                    style={
+                      isActive
+                        ? {
+                            backgroundColor: "var(--nav-active-bg)",
+                            color: "var(--nav-active-text)",
+                          }
+                        : undefined
+                    }
                     className={`mt-1 block rounded-lg px-3 py-2 text-sm ${
                       isActive
-                        ? "bg-[var(--button-bg)] text-[var(--button-text)]"
-                        : "text-[var(--foreground)] hover:bg-[var(--glass-soft)]"
+                        ? ""
+                        : "text-[var(--nav-item-text)] hover:bg-[var(--nav-item-hover-bg)]"
                     }`}
                   >
                     {each.title}

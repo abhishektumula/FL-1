@@ -15,6 +15,11 @@
   --glass-soft: rgba(255, 252, 247, 0.44);
   --button-bg: #1f1c18;
   --button-text: #f8f5ef;
+  --nav-menu-bg: rgba(255, 252, 247, 0.86);
+  --nav-item-text: #1f1c18;
+  --nav-item-hover-bg: rgba(31, 28, 24, 0.08);
+  --nav-active-bg: #1f1c18;
+  --nav-active-text: #f8f5ef;
 }
 
 [data-theme="dark"] {
@@ -32,6 +37,11 @@
   --glass-soft: rgba(47, 39, 31, 0.45);
   --button-bg: #f4ece1;
   --button-text: #1f1a15;
+  --nav-menu-bg: rgba(32, 26, 20, 0.9);
+  --nav-item-text: #f4ece1;
+  --nav-item-hover-bg: rgba(244, 236, 225, 0.12);
+  --nav-active-bg: #f4ece1;
+  --nav-active-text: #1f1a15;
 }
 
 @theme inline {
