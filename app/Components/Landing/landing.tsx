@@ -33,7 +33,7 @@ export const Landing = () => {
           <div className="space-y-1">
             {words.map((word, index) => (
               <h1
-                className="text-center text-4xl tracking-tight text-[var(--muted)] md:text-6xl"
+                className="text-center text-4xl tracking-tight text-(--muted) md:text-6xl"
                 key={index}
               >
                 <motion.span
@@ -42,7 +42,7 @@ export const Landing = () => {
                   transition={{ delay: 0.18 * index + 0.9, duration: 0.35 }}
                   className={`${
                     ["DESIGN", "HOUSE", "BEAUTY"].includes(word)
-                      ? "font-semibold text-[var(--foreground)]"
+                      ? "font-semibold text-foreground"
                       : ""
                   }`}
                 >
@@ -52,7 +52,7 @@ export const Landing = () => {
             ))}
           </div>
 
-          <p className="max-w-xl text-center text-sm leading-relaxed text-[var(--muted)] md:text-base">
+          <p className="max-w-xl text-center text-sm leading-relaxed text-(--muted) md:text-base">
             Bespoke interiors for homes and offices, from concept to execution,
             built around your taste and everyday life.
           </p>
