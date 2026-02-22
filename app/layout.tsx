@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Sreeja Interiors | Premium Interior Design & Decoration Studio",
     description:
       "Transforming spaces with exquisite interior design services for residential, commercial, and office environments. Offering end-to-end execution, modular solutions, and bespoke decor to create aesthetic and functional spaces.",
-    url: "https://sreejainteriors.com", // Assuming this is the website URL, please update if different
+    url: "https://sreeja-interiors.vercel.app", // Assuming this is the website URL, please update if different
     siteName: "Sreeja Interiors",
     images: [
       {
