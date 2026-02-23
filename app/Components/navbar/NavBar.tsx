@@ -35,13 +35,13 @@ export function NavBar() {
   }, [theme]);
 
   return (
-    <header className="sticky top-0 z-50 h-28 w-full border-b border-[var(--line)] bg-[var(--nav-glass)] backdrop-blur-3xl">
+    <header className="sticky top-0 z-50 h-28 w-full border-b border-(--line) bg-(--nav-glass) backdrop-blur-3xl">
       <div className="mx-auto flex h-full w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex flex-col leading-tight">
-          <span className="hidden text-[11px] uppercase tracking-[0.2em] text-[var(--muted)] sm:block">
+          <span className="hidden text-[11px] uppercase tracking-[0.2em] text-(--muted) sm:block">
             Interior Studio
           </span>
-          <span className="text-lg font-semibold tracking-tight text-[var(--foreground)] sm:text-2xl">
+          <span className="text-lg font-semibold tracking-tight text-foreground sm:text-2xl">
             Sreeja Interiors
           </span>
         </Link>
@@ -51,9 +51,11 @@ export function NavBar() {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => setTheme((prev) => (prev === "light" ? "dark" : "light"))}
+            onClick={() =>
+              setTheme((prev) => (prev === "light" ? "dark" : "light"))
+            }
             aria-label="Toggle theme"
-            className="rounded-full border border-[var(--line)] bg-[var(--glass-soft)] p-2 text-[var(--foreground)] backdrop-blur-md transition hover:scale-[1.03]"
+            className="rounded-full border border-(--line) bg-(--glass-soft) p-2 text-foreground backdrop-blur-md transition hover:scale-[1.03]"
           >
             {theme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
           </button>
@@ -79,16 +81,20 @@ export const DesktopBar = ({ pathname }: { pathname: string }) => {
             key={each.ref}
             href={each.ref}
             onMouseEnter={() => setHovered(each.ref)}
-            className="relative z-10 px-1 py-2 text-sm font-medium text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+            className="relative z-10 px-1 py-2 text-sm font-medium text-(--muted) transition-colors hover:text-foreground"
           >
             {activeRef === each.ref ? (
               <motion.span
                 layoutId="nav-hover-pill"
-                className="absolute -bottom-1 left-0 right-0 -z-10 h-[3px] rounded-full bg-[var(--foreground)]"
+                className="absolute -bottom-1 left-0 right-0 -z-10 h-[3px] rounded-full bg-foreground"
                 transition={{ type: "spring", stiffness: 420, damping: 34 }}
               />
             ) : null}
-            <span className={activeRef === each.ref ? "text-[var(--foreground)]" : "text-[var(--muted)]"}>
+            <span
+              className={
+                activeRef === each.ref ? "text-foreground" : "text-(--muted)"
+              }
+            >
               {each.title}
             </span>
           </Link>
